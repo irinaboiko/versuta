@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>{{ section.settings.page-title }}</h1>
+    <div>
+        <img class="picture-main" src="https://cdn.shopify.com/s/files/1/0492/7134/1216/{{ section.settings.picture }}" alt="">
+        <p class="text">{{ section.settings.page-text }}</p>
+    </div>
+    <div class="video-block">
+        <h2>{{ section.settings.video-title }}</h2>
+        <iframe width="560" height="315" src={{ section.settings.video-url }} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+</div>
+
+
+
+{% schema %}
+{
+    "name": "About",
+    "tag": "section",
+    "class": "about-page",
+    "settings": [
+        {
+            "id": "page-title",
+            "type": "text",
+            "label": "Page Title",
+            "default": "About Us"
+        },
+        {
+            "id": "picture",
+            "type": "image_picker",
+            "label": "About Image"
+        },
+        {
+            "type": "textarea",
+            "id": "page-text",
+            "default": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ipsa temporibus, natus vitae corporis quae esse exercitationem quos fuga veritatis. Fugit neque id eos maiores quae dicta sequi ipsa iste?",
+            "label": "Text"
+        },
+        {
+            "id": "video-title",
+            "type": "text",
+            "label": "Video Title",
+            "default": "Look at our happy clients:"
+        },
+        {
+            "id": "video_url",
+            "type": "video_url",
+            "label": "Video URL",
+            "accept": ["youtube", "vimeo"],
+            "default": "https://youtu.be/uHKfrz65KSU"
+        }
+    ]    
+}
+{% endschema %}
