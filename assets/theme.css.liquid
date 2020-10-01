@@ -3693,6 +3693,43 @@ hr {
       min-width: 150px; } }
 
 /*============================================================================
+  Navigation custom
+==============================================================================*/
+
+.nav-products {
+  background-color: #5a06804d;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+.nav-products ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+.nav-products li {
+  margin: 0 60px;
+}
+.nav-products a {
+  font-size: 26px;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2.5px;
+}
+.nav-products .link-active {
+  color: var(--color-text-focus);
+  border-bottom: 1px solid var(--color-text);
+}
+.nav-products a:hover {
+  color: var(--color-text-focus);
+  border-bottom: 1px solid var(--color-text);
+}
+/* .nav-products .child {
+  display: none;
+} */
+
+/*============================================================================
   About template
 ==============================================================================*/
 
@@ -3741,6 +3778,45 @@ hr {
   background-color: transparent;
   margin-top: 50px;
 }
+
+/*============================================================================
+  COLLECTIONS SLIDER
+==============================================================================*/
+
+.collection-slider {
+  height: 480px;
+  overflow: hidden;
+}
+.collection-slider .slick-track {
+  display: flex;
+ }
+ .collection-slider .product-card {
+  width: 100%;
+}
+.collection-slider .slick-prev {
+  left: 0;
+  z-index: 999;
+  outline: none;
+}
+.collection-slider .slick-next {
+  right: 0;
+  z-index: 999;
+  outline: none;
+}
+.collection-slider .grid-view-item__image-container {
+  outline: none;
+}
+.collection-slider .h4 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.collection-slider .price {
+  font-size: 20px;
+  align-items: center;
+}
+
 
 /*================ MODULES ================*/
 .site-header {

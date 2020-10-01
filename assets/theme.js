@@ -9318,3 +9318,29 @@ function removeImageLoadingAnimation(image) {
     imageWrapper.removeAttribute('data-image-loading-animation');
   }
 }
+
+/* ================ SLIDER COLLECTIONS ================ */
+
+$(document).ready(function(){
+
+  $('.collection-slider').each(function(){
+    var num_slider = 2;
+    if (window.innerWidth >= 750) {
+      var num_slider = $(this).data('slides');
+    }
+    $(this).slick({
+      slidesToShow: num_slider,
+      slidesToScroll: 1,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 10000,
+    });
+  });
+
+ /*  $('.collection-slider').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  });
+ */
+});
