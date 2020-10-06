@@ -9336,11 +9336,4 @@ $(document).ready(function(){
       autoplaySpeed: 10000,
     });
   });
-
- /*  $('.collection-slider').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3
-  });
- */
 });

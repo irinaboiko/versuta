@@ -3693,23 +3693,28 @@ hr {
       min-width: 150px; } }
 
 /*============================================================================
-  Navigation custom
+  Navigation in products
 ==============================================================================*/
 
 .nav-products {
   background-color: #5a06804d;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .7);
   padding: 40px 0;
   margin-bottom: 40px;
 }
-.nav-products ul {
+.nav-products .ul-parent {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
 }
-.nav-products li {
+.nav-products .li-parent {
+  position: relative;
   margin: 0 60px;
+}
+.nav-products .has-child {
+  color: white;
 }
 .nav-products a {
   font-size: 26px;
@@ -3725,9 +3730,28 @@ hr {
   color: var(--color-text-focus);
   border-bottom: 1px solid var(--color-text);
 }
-/* .nav-products .child {
-  display: none;
-} */
+.nav-products .li-parent:hover .child {
+  visibility: visible;
+}
+.nav-products .li-parent .child {
+  background-color: #eee3f3;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  position: absolute;
+  z-index: 999;
+  padding: 20px 70px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+.nav-products .child li {
+  margin-bottom: 5px;
+}
+.nav-products .child a {
+  font-size: 18px;
+}
+
 
 /*============================================================================
   About template
@@ -3817,6 +3841,54 @@ hr {
   align-items: center;
 }
 
+/*============================================================================
+  PRODUCTS BADGES
+==============================================================================*/
+
+.product-card {
+  position: relative;
+}
+.badge {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 99;
+  transform: rotate(-20deg);
+}
+.badge-new {
+  background-color: rgb(190, 159, 231);
+}
+
+/*============================================================================
+  NEW ARRIVAL
+==============================================================================*/
+.new-arrivals {
+  background-color: #fff;
+}
+.new-arrivals li {
+  position: relative;
+}
+.new-arrivals .product-mark {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(190, 159, 231);
+  transform: rotate(-20deg);
+}
 
 /*================ MODULES ================*/
 .site-header {
