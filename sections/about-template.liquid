@@ -6,7 +6,8 @@
     </div>
     <div class="video-block">
         <h2>{{ section.settings.video-title }}</h2>
-        <iframe width="560" height="315" src={{ section.settings.video-url }} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% assign videoId1 = section.settings.video_url | split: 'watch?v=' %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId1[1] }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 
@@ -46,7 +47,7 @@
             "type": "video_url",
             "label": "Video URL",
             "accept": ["youtube", "vimeo"],
-            "default": "https://youtu.be/uHKfrz65KSU"
+            "default": "https://www.youtube.com/watch?v=uHKfrz65KSU"
         }
     ]    
 }

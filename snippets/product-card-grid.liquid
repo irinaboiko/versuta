@@ -9,11 +9,21 @@
     {% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 <div class="grid-view-item{% unless product.available %} grid-view-item--sold-out{% endunless %} product-card">
-  {% assign days = 7 %}
-  {% assign period_time = days | times: 24 | times: 60 | times: 60 %}
-  {% assign date_now = 'now' | date:'%s' %}
-  {% assign date_finished = product.published_at | date:'%s' | plus: period_time | date:'%s' %}
-  {% if date_finished > date_now %}<span class="badge badge-new">NEW</span>{% endif %}
+
+    {% assign days = 7 %}
+    {% assign period_time = days | times: 24 | times: 60 | times: 60 %}
+    {% assign date_now = 'now' | date:'%s' %}
+    {% assign date_finished = product.published_at | date:'%s' | plus: period_time | date:'%s' %}
+    {% if date_finished > date_now %}
+        <span class="badge badge-new">NEW</span>
+    {% else %}
+        {% for variant in product.variants %}
+            {% if variant.inventory_quantity <= 3 and variant.inventory_policy == 'deny'%}
+                <span class="badge badge-closeout">CLOSE<br>OUT</span>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
 
   <a class="grid-view-item__link grid-view-item__image-container full-width-link" href="{{ product.url | within: collection }}">
     <span class="visually-hidden">{{ product.title }}</span>

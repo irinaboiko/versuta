@@ -1,0 +1,53 @@
+<div class="container-pagination">
+
+    <h2 class="title-pagination">{{ section.settings.heading }}</h2>
+
+    <ul class="ul-pagination">
+        {% assign collection = collections.all %}
+        {% paginate collection.products by 6 %}
+            {% for product in collection.products %}
+                <li>
+                    <a href="{{ product.url }}">
+                    <div class="product">
+                        <figure><img src="{{ product.featured_image | product_img_url: 'medium' }}" /></figure>
+                        <div class="product-name">{{ product.title }}</div>
+                        <div class="product-details">{{ product.type }}</div>
+                        <div class="product-price">{{ product.price | money }}</div>
+                    </div>
+                    </a>
+                </li>
+            {% endfor %}
+            <div class="nav-pagination">
+                {{ paginate | default_pagination }}
+            </div>
+        {% endpaginate %}
+    </ul>
+
+</div>
+
+{% schema %}
+    {
+        "name": "Pagination section",
+        "class": "pagination-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "text",
+                "label": "Heading",
+                "id": "heading",
+                "default": "Title"
+            }
+        ],
+        "presets": [
+            {
+                "category": "Pagination section",
+                "name": "Pagination section"
+            }
+        ]
+    }
+    
+{% endschema %}
+
+{% style %}
+
+{% endstyle %}

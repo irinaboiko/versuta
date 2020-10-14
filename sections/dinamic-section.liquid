@@ -1,0 +1,121 @@
+<div class="container-dinamic">
+    <h2 class="title-dinamic">{{ section.settings.heading }}</h2>
+    {{ section.settings.description }}
+    
+    <div class="content-dinamic">
+    {% for block in section.blocks %}
+        
+            {% case block.type %}
+                {% when 'richtext' %}
+                    {{ block.settings.text_block }}
+                {% when 'image' %}
+                    <img src="{{ block.settings.image | img_url: '300x300' }}">
+                {% when 'video_url' %}
+                    {% assign videoId = block.settings.video_url | split: 'watch?v=' %}
+                    <iframe class="video-dinamic" width="560" height="315" src="https://www.youtube.com/embed/{{ videoId[1] }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endcase %}
+        
+    {% endfor %}
+    </div>
+
+    <a href="{{ section.settings.link }}" class="button">{{ section.settings.linktext }}</a>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Dinamic section",
+        "class": "dinamic-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "text",
+                "label": "Heading",
+                "id": "heading",
+                "default": "Title"
+            },
+            {
+                "type": "richtext",
+                "label": "Description",
+                "id": "description",
+                "default": "<p>Content</p>"
+            },
+            {
+                "type":      "color",
+                "id":        "background_color",
+                "label":     "Background Color",
+                "default":   "#ffffff"
+            },
+            {
+                "type":      "color",
+                "id":        "text_color",
+                "label":     "Text Color",
+                "default":   "#333232"
+            },
+            {
+                "id": "link",
+                "type": "url",
+                "label": "Button link"
+            },
+            {
+                "id": "linktext",
+                "type": "text",
+                "label": "Button text",
+                "default": "Click Here"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "label": "Image",
+                        "id": "image"
+                    }
+                ]
+            },
+            {
+                "type": "richtext",
+                "name": "Text block",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "label": "Text",
+                        "id": "text_block"
+                    }
+                ]
+            },
+            {
+                "type": "video_url",
+                "name": "Video block",
+                "settings": [
+                    {
+                        "id": "video_url",
+                        "type": "video_url",
+                        "label": "Video URL",
+                        "accept": ["youtube"],
+                        "default": "https://www.youtube.com/watch?v=3TdPBB9Z_cs"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "category": "Dinamic section",
+                "name": "Dinamic section"
+            }
+        ]
+    }
+    
+{% endschema %}
+
+{% style %}
+    .dinamic-section {
+        background-color: {{ section.settings.background_color }};
+    }
+    .dinamic-section p {
+        color: {{ section.settings.text_color }};
+    }
+{% endstyle %}
